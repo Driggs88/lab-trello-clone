@@ -5,9 +5,11 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require ('mongoose');
-const dotenv = require ('dotenv');
 // Lesson 2: Require dotenv configuration
+
+// Mongoose configuration
+require ('./config/database');
+// Lesson 2: Use environment variable for the MONGODB_URI
 
 const app = express();
 
@@ -20,9 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Mongoose configuration
-require ('config/dateBase');
-// Lesson 2: Use environment variable for the MONGODB_URI
+
 
 app.set('view engine', 'jade');
 
