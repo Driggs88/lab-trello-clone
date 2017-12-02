@@ -4,7 +4,7 @@ cardModel = require('./card.model');
 listModel = require('../list/list.model');
 
 exports.createCard = (req, res, next) => {
-  const newCard = new CardModel({
+  const newCard = new cardModel({
     title: req.body.title,
     description: req.body.description,
     dueDate: req.body.dueDate,
@@ -20,7 +20,13 @@ exports.createCard = (req, res, next) => {
       return res.send(500);
     }
 
-   listModel.findByIdAndUpdate({_id: listId }, {$push: {cards: cardId}}).exec();
+   listModel.findByIdAndUpdate({ _id: listId }, {$push: {cards: card._id}}).exec()
+
+		 res.json({
+			 title: card.title,
+			 message: 'New card created'
+		 });
+
   });
 };
 
