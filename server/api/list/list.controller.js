@@ -10,7 +10,7 @@ exports.getLists = function(req, res, next) {
 	 	}
 
         return new Promise((resolve, reject) => {
-            listModel.populate(lists, 'cards')
+            listModel.populate(lists, 'cards._id')
                 .then((_lists) => {
                     _.forEach(lists, (list) => {
                         list.cards = _.orderBy(list.cards, ['position','title','_id']);
