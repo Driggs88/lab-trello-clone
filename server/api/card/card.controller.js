@@ -9,7 +9,7 @@ exports.createCard = function(req, res, next) {
 		description: req.body.description,
 		dueDate: req.body.dueDate,
 		list: req.body.list,
-        position: req.body.position
+    position: req.body.position
 	});
 
 	newCard.save(function(err, card) {
